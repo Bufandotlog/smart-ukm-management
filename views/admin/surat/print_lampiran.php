@@ -11,6 +11,9 @@ require_once '../../../core/models/Ukm.php';
 require_once '../../../core/helpers.php';
 
 Session::requireLogin();
+if (Session::get('admin_role') === 'admin') {
+    die("Akses ditolak. Peran Admin tidak diperbolehkan mencetak lampiran.");
+}
 
 try {
     $id = (int)($_GET['id'] ?? 0);

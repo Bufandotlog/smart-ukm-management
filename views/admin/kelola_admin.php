@@ -78,6 +78,8 @@
                     <td class="px-6 py-4">
                         <?php if ($admin['role'] === 'superadmin'): ?>
                             <span class="px-3 py-1 bg-primary/10 text-primary text-[11px] font-bold uppercase rounded-full">Super Admin</span>
+                        <?php elseif ($admin['role'] === 'sekretaris'): ?>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-[11px] font-bold uppercase rounded-full">Sekretaris <?= h($ENTITY) ?></span>
                         <?php else: ?>
                             <span class="px-3 py-1 bg-secondary-container/30 text-on-secondary-container text-[11px] font-bold uppercase rounded-full">Admin <?= h($ENTITY) ?></span>
                         <?php endif; ?>

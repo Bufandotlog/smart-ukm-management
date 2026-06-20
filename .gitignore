@@ -20,3 +20,6 @@ hardware/**/config.h
 # OS Specific
 .DS_Store
 Thumbs.db
+
+# Database Migrations (One-time use)
+database/migration_role_sekretaris.sql

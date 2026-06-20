@@ -11,6 +11,9 @@ require_once '../../../core/models/Pengaturan.php';
 require_once '../../../core/Session.php';
 
 Session::requireLogin();
+if (Session::get('admin_role') === 'admin') {
+    die("Akses ditolak. Peran Admin tidak diperbolehkan mencetak surat.");
+}
 
 $id = (int)($_GET['id'] ?? 0);
 $suratModel = new SuratModel();

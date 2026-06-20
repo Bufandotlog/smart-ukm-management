@@ -1,6 +1,7 @@
 <?php
 $currentPage = $_GET['page'] ?? 'dashboard';
 $isSuperAdmin = (Session::get('admin_role') === 'superadmin');
+$isSecretaryOrSuper = ($isSuperAdmin || Session::get('admin_role') === 'sekretaris');
 $_entityLabel = getEntityLabel();
 
 $navItems = [
@@ -77,6 +78,7 @@ function renderNav($id, $item, $currentPage) {
             <?= renderNav($id, $item, $currentPage) ?>
         <?php endforeach; ?>
         
+        <?php if ($isSecretaryOrSuper): ?>
         <div class="px-3 mt-6 mb-2 text-[10px] font-bold uppercase tracking-[0.1em] text-outline">Surat & Arsip</div>
         <?php foreach ($suratItems as $id => $item): ?>
             <?= renderNav($id, $item, $currentPage) ?>
@@ -86,6 +88,7 @@ function renderNav($id, $item, $currentPage) {
         <?php foreach ($pinjamItems as $id => $item): ?>
             <?= renderNav($id, $item, $currentPage) ?>
         <?php endforeach; ?>
+        <?php endif; ?>
 
         <div class="px-3 mt-6 mb-2 text-[10px] font-bold uppercase tracking-[0.1em] text-outline">Sistem</div>
         

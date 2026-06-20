@@ -38,6 +38,7 @@
                     <?php $role = $adm['role'] ?? 'admin'; ?>
                     <select name="role" class="w-full bg-surface-container-highest/40 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 transition-all text-sm text-slate-800 cursor-pointer">
                         <option value="admin" <?= $role === 'admin' ? 'selected' : '' ?>>Admin <?= h($ENTITY) ?></option>
+                        <option value="sekretaris" <?= $role === 'sekretaris' ? 'selected' : '' ?>>Sekretaris <?= h($ENTITY) ?></option>
                         <option value="superadmin" <?= $role === 'superadmin' ? 'selected' : '' ?>>Super Admin</option>
                     </select>
                 </div>

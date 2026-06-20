@@ -65,6 +65,21 @@ if ($action) {
         }
     }
 
+    // Protect letter-related actions from 'admin' role
+    $letterActions = [
+        'arsip_surat_store', 'arsip_surat_update', 'arsip_surat_delete', 'arsip_surat_update_tanggal',
+        'arsip_surat_duplicate', 'arsip_surat_export', 'arsip_surat_save_kop', 'surat_template_store',
+        'surat_template_delete', 'panitia_tetap_save', 'panitia_tetap_delete', 'surat_global_save',
+        'barang_store', 'barang_update', 'barang_delete', 'lampiran_pinjam_store', 'lampiran_pinjam_delete'
+    ];
+    if (in_array($action, $letterActions)) {
+        Session::requireLogin();
+        if (Session::get('admin_role') === 'admin') {
+            setFlash('error', 'Akses ditolak. Peran Admin tidak diperbolehkan mengakses aksi surat/inventaris.');
+            redirect('index.php?page=dashboard');
+        }
+    }
+
     switch ($action) {
         // --- Auth ---
         case 'login':
@@ -1268,6 +1283,10 @@ switch ($page) {
     case 'cetak_lampiran':
     case 'arsip_lampiran':
         Session::requireLogin();
+        if (Session::get('admin_role') === 'admin') {
+            setFlash('error', 'Akses ditolak. Peran Admin tidak diperbolehkan mengakses halaman surat/inventaris.');
+            redirect('index.php?page=dashboard');
+        }
         require_once 'core/models/Surat.php';
         require_once 'core/models/Ukm.php';
         require_once 'core/models/Periode.php';

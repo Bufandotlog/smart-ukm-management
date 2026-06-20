@@ -35,6 +35,7 @@
                     <label class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">Role Akun</label>
                     <select name="role" class="w-full bg-surface-container-highest/40 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 transition-all text-sm text-slate-800 cursor-pointer">
                         <option value="admin">Admin <?= h($ENTITY) ?></option>
+                        <option value="sekretaris">Sekretaris <?= h($ENTITY) ?></option>
                         <option value="superadmin">Super Admin</option>
                     </select>
                 </div>
