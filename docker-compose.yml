@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # 1. Database Service (Private, no public ports exposed)
   db:
-    image: mariadb:10.11-alpine
+    image: mariadb:10.11
     container_name: ukm_db
     restart: unless-stopped
     env_file:
